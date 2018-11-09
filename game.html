@@ -46,11 +46,13 @@
             'assets/dude.png',
             { frameWidth: 32, frameHeight: 48 }
         );
+        this.load.audio('twinkle', 'assets/Twinkle.wav')
         console.log('#0');
     }
 
     function create ()
     {
+
 
         cursors = this.input.keyboard.createCursorKeys();
         this.add.image(400,300, 'sky');
@@ -104,6 +106,7 @@
         this.physics.add.collider(player, platforms);
         this.physics.add.collider(stars, platforms);
         this.physics.add.overlap(player, stars, collectStar, null, this);
+
     }
     function hitBomb (player, bomb)
     {
@@ -118,6 +121,8 @@
 
     function collectStar (player, star)
     {
+        var twinkle = this.sound.add('Twinkle');
+        twinkle.play();
         star.disableBody(true, true);
 
         score += 10;
