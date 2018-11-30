@@ -38,6 +38,9 @@
 
     function preload ()
     {
+        this.load.audio('background', 'assets/bensound-jazzyfrenchy.mp3');
+        this.load.audio('backgound2', 'bensound-summer.mp3');
+
         this.load.image('sky', 'assets/sky.png');
         this.load.image('ground', 'assets/platform.png');
         this.load.image('star', 'assets/star.png');
@@ -46,13 +49,26 @@
             'assets/dude.png',
             { frameWidth: 32, frameHeight: 48 }
         );
-        this.load.audio('twinkle', 'assets/Twinkle.wav')
+        this.load.audio('twinkle', 'assets/Twinkle.wav');
         console.log('#0');
     }
 
     function create ()
     {
+        var background = this.sound.add('background');
+        background.setLoop(true);
 
+        var background2 = this.sound.add('background2');
+        background.setLoop(true);
+
+        random = Math.floor(Math.random()*2)
+
+        if(random == 0){
+            background.play();
+        }
+        if(random == 1){
+            background2.play()
+        }
 
         cursors = this.input.keyboard.createCursorKeys();
         this.add.image(400,300, 'sky');
@@ -121,7 +137,7 @@
 
     function collectStar (player, star)
     {
-        var twinkle = this.sound.add('Twinkle');
+        var twinkle = this.sound.add('twinkle');
         twinkle.play();
         star.disableBody(true, true);
 
