@@ -39,7 +39,7 @@
     function preload ()
     {
         this.load.audio('background', 'assets/bensound-jazzyfrenchy.mp3');
-        this.load.audio('backgound2', 'bensound-summer.mp3');
+        this.load.audio('background2', 'bensound-summer.mp3');
 
         this.load.image('sky', 'assets/sky.png');
         this.load.image('ground', 'assets/platform.png');
@@ -56,18 +56,17 @@
     function create ()
     {
         var background = this.sound.add('background');
-        background.setLoop(true);
+        //background.setLoop(true);
 
         var background2 = this.sound.add('background2');
-        background.setLoop(true);
+        //background2.setLoop(true);
 
         random = Math.floor(Math.random()*2)
 
-        if(random == 0){
+        if(random){
             background.play();
-        }
-        if(random == 1){
-            background2.play()
+        } else {
+            background2.play();
         }
 
         cursors = this.input.keyboard.createCursorKeys();
